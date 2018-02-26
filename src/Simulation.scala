@@ -15,3 +15,6 @@ class BasicSimulation extends Simulation {
     .exec(http("press some button")
       .get("/"))
 .pause(7) // Note that Gatling has recorder real time pauses
+
+  setUp(scn.inject(atOnceUsers(1)).protocols(httpConf))
+}
