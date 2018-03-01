@@ -1,6 +1,6 @@
 node()
 {
-deletDir()
+cleanWs()
 stage('clone')
 {
 checkout scm
