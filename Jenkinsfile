@@ -1,17 +1,23 @@
-node()
-{
-deletDir()
-stage('clone')
-{
-checkout scm
+
+stage('checkout intygstjanst') {
+    node {
+        checkout scm
+    }
 }
-stage('build')
-{
-sh "sbt gatling:test -Dgatling.simulationClass=computerdatabase.BasicItSimulation"
-}
-}
-post{
-success{
-gatlingArchive()
-}
-}
+
+stage('build') {
+  node {
+            sh 'sbt gatling:test -Dgatling.simulationClass=BasicSimulation'
+        }
+    }
+
+
+stage('gatling') {
+    node {
+            try {
+                sh "echo 'gatling archive'"
+            } finally {
+                gatlingArchive()
+            }
+        }
+    }
