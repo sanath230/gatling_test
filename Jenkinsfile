@@ -21,7 +21,7 @@ pipeline
       {
         steps
         {
-          node()
+          agent none
           {
             gatlingArchive()
           }
