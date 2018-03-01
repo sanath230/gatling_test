@@ -19,8 +19,10 @@ sh 'sbt gatling:test -Dgatling.simulationClass=BasicSimulation'
 }  
 }
 }  
+node{
 post{
 success{
 gatlingArchive() 
 }
+}  
 }
