@@ -24,18 +24,10 @@ steps
 sh 'sbt gatling:test -Dgatling.simulationClass=BasicSimulation'
 }
 }  
-stage('post build action')
-{
-steps
-{ 
-node{  
+}
+}  
 post{
 success{
-gatlingArchive()
-}  
-}
-}  
-}  
+gatlingArchive() 
 }
 }
-}  
