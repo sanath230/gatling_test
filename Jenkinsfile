@@ -18,8 +18,8 @@ pipeline
         }
       }
       stage('gatling') {
+        agents none
         steps{
-        agent none
             try {
                 echo 'gatling archive'
             } finally {
