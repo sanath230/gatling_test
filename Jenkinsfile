@@ -21,16 +21,18 @@ stage('build')
 {
 steps
 { 
-sh "sbt gatling:test -Dgatling.simulationClass=computerdatabase.BasicItSimulation"
+sh 'sbt gatling:test -Dgatling.simulationClass=BasicSimulation'
 }
 }  
 stage('post build action')
 {
 steps
-{  
+{ 
+  node(){  
 post{
 success{
 gatlingArchive()
+}  
 }
 }  
 }  
