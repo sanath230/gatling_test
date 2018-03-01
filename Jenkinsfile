@@ -21,12 +21,8 @@ pipeline
       {
         steps
         {
-          post{
-            always{
-              gatlingArchive()
-            }
-          }
+          gatlingArchive()
         }
       }
     }
-  }
+}
