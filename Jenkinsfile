@@ -3,13 +3,6 @@ pipeline
 agent none
 stages
 {
-stage('clean directory')
-{
-steps
-{  
-cleanWs()
-}
-}  
 stage('clone')
 {
 steps
