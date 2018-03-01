@@ -22,10 +22,8 @@ pipeline
         steps
         {
           agent none
-          {
             gatlingArchive()
           }
         }
-      }
     }
 }
