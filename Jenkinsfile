@@ -14,15 +14,20 @@ stage('build')
 {
 steps
 { 
-sh 'sbt gatling:test -Dgatling.simulationClass=BasicSimulation'
+sh 'sbt gatling:test -Dgatling.simulationClass=BasicSimulation'  
 }
 }  
+stage('post build action')
+  {
+    steps
+    {
+  post{
+    always{
+      gatlingArchive()
+    }
+  }
 }
-}  
-node{
-post{
-success{
-gatlingArchive() 
+  }
 }
-}  
 }
+
