@@ -17,10 +17,15 @@ pipeline
           sh 'sbt gatling:test -Dgatling.simulationClass=BasicSimulation'
         }
       }
+      stage('post build')
+      {
+        steps
+        {
+          node()
+          {
+            gatlingArchive()
+          }
+        }
+      }
     }
-  post{
-    success{
-      gatlingArchive()
-    }
-  }
 }
