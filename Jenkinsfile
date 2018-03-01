@@ -1,31 +1,23 @@
-pipeline
-{
-  agent none
-    stages
-    {
-      stage('clone repo')
-      {
-        steps
-        {
-          checkout scm
+
+stage('checkout intygstjanst') {
+    node {
+        checkout scm
+    }
+}
+
+stage('build') {
+  node {
+            sh 'sbt gatling:test -Dgatling.simulationClass=BasicSimulation'
         }
-      }
-      stage('build')
-      {
-        steps
-        {
-          sh 'sbt gatling:test -Dgatling.simulationClass=BasicSimulation'
-        }
-      }
-      stage('gatling') {
-        agents none
-        steps{
+    }
+
+
+stage('gatling') {
+    node {
             try {
-                echo 'gatling archive'
+                sh "echo 'gatling archive'"
             } finally {
                 gatlingArchive()
             }
         }
-        }
     }
-}
