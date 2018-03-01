@@ -1,33 +1,20 @@
-pipeline
+node()
 {
-agent none
-stages
-{
+cleanWs()
 stage('clone')
 {
-steps
-{  
 checkout scm
 }
-}  
 stage('build')
 {
-steps
-{ 
-sh 'sbt gatling:test -Dgatling.simulationClass=BasicSimulation'  
+sh "sbt gatling:test -Dgatling.simulationClass=computerdatabase.BasicItSimulation"
 }
-}  
-stage('post build action')
+stage('post build')
   {
-    steps
-    {
-  post{
-    always{
-      gatlingArchive()
+    post{
+      always{
+        gatlingArchive()
+      }
     }
   }
 }
-  }
-}
-}
-
