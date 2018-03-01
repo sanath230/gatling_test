@@ -19,7 +19,7 @@ pipeline
       }
       stage('gatling') {
         steps{
-        node {
+        agent none
             try {
                 echo 'gatling archive'
             } finally {
@@ -28,5 +28,4 @@ pipeline
         }
         }
     }
-}
 }
