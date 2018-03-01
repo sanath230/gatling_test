@@ -28,7 +28,7 @@ stage('post build action')
 {
 steps
 { 
-  node(){  
+node{  
 post{
 success{
 gatlingArchive()
